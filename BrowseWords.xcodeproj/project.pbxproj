@@ -22,6 +22,8 @@
 		524D2A7717FCA97F003AB266 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 524D2A7517FCA97F003AB266 /* InfoPlist.strings */; };
 		524D2A7917FCA97F003AB266 /* BrowseWordsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D2A7817FCA97F003AB266 /* BrowseWordsTests.m */; };
 		524D2A8417FCABA5003AB266 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D2A8317FCABA5003AB266 /* Word.m */; };
+		524D2A8717FCBB3C003AB266 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D2A8617FCBB3C003AB266 /* DetailViewController.m */; };
+		524D2A8A17FCD36C003AB266 /* AddWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524D2A8917FCD36C003AB266 /* AddWordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		524D2A7817FCA97F003AB266 /* BrowseWordsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseWordsTests.m; sourceTree = "<group>"; };
 		524D2A8217FCABA5003AB266 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
 		524D2A8317FCABA5003AB266 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		524D2A8517FCBB3C003AB266 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		524D2A8617FCBB3C003AB266 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		524D2A8817FCD36C003AB266 /* AddWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWordViewController.h; sourceTree = "<group>"; };
+		524D2A8917FCD36C003AB266 /* AddWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,10 @@
 				524D2A5C17FCA97F003AB266 /* AppDelegate.h */,
 				524D2A5D17FCA97F003AB266 /* AppDelegate.m */,
 				524D2A5F17FCA97F003AB266 /* Main.storyboard */,
+				524D2A8817FCD36C003AB266 /* AddWordViewController.h */,
+				524D2A8917FCD36C003AB266 /* AddWordViewController.m */,
+				524D2A8517FCBB3C003AB266 /* DetailViewController.h */,
+				524D2A8617FCBB3C003AB266 /* DetailViewController.m */,
 				524D2A6217FCA97F003AB266 /* ViewController.h */,
 				524D2A6317FCA97F003AB266 /* ViewController.m */,
 				524D2A8217FCABA5003AB266 /* Word.h */,
@@ -254,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524D2A8A17FCD36C003AB266 /* AddWordViewController.m in Sources */,
+				524D2A8717FCBB3C003AB266 /* DetailViewController.m in Sources */,
 				524D2A6417FCA97F003AB266 /* ViewController.m in Sources */,
 				524D2A8417FCABA5003AB266 /* Word.m in Sources */,
 				524D2A5E17FCA97F003AB266 /* AppDelegate.m in Sources */,

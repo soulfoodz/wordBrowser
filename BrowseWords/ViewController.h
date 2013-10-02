@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *wordsDict;
-@property (strong, nonatomic) UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

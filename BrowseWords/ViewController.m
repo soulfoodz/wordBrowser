@@ -7,7 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "DetailViewController.h"
 #import "Word.h"
+
+
+typedef void  (^wordBlock)(Word *);
+typedef Word* (^wordCreationBlock)(NSString *, NSString *, NSArray *);
 
 @interface ViewController ()
 
@@ -26,7 +31,7 @@
     Word *soccerball    = [[Word alloc] initWithWord:@"soccerball"  andDefinition:@"Ball you play soccer with"];
     Word *tennisball    = [[Word alloc] initWithWord:@"tennisball"  andDefinition:@"Ball you play tennis with"];
     Word *golfball      = [[Word alloc] initWithWord:@"golfball"    andDefinition:@"Ball you play golf with"];
-    Word *basketball    = [[Word alloc] initWithWord:@"basketball"  andDefinition:@"Ball you play football with"];
+    Word *basketball    = [[Word alloc] initWithWord:@"basketball"  andDefinition:@"Ball you play basketball with"];
 //    Word *pizza         = [[Word alloc] initWithWord:@"pizza"       andDefinition:@"Crust, sauce, cheese, basil. Yum"];
 //    Word *cookies       = [[Word alloc] initWithWord:@"cookies"     andDefinition:@"Flour, butter, egg, sugar, bake"];
 //    Word *pan           = [[Word alloc] initWithWord:@"pan"         andDefinition:@"Cooking eggs"];
@@ -47,18 +52,70 @@
     baseball.synonyms   = @[tennisball, basketball];
     tennisball.synonyms = @[football, basketball];
     golfball.synonyms   = @[soccerball, baseball];
+    basketball.synonyms = @[golfball, tennisball];
+    soccerball.synonyms = @[baseball, football];
 
     [self.wordsDict setObject:football   forKey:football.word];
     [self.wordsDict setObject:baseball   forKey:baseball.word];
     [self.wordsDict setObject:tennisball forKey:tennisball.word];
     [self.wordsDict setObject:golfball   forKey:golfball.word];
+    [self.wordsDict setObject:basketball forKey:basketball.word];
+    [self.wordsDict setObject:soccerball forKey:soccerball.word];
+}
 
-    
-    
-    
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.wordsDict.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    
+    cell.textLabel.text = [[self.wordsDict allKeys] objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+    Word *word                = [self.wordsDict objectForKey:[[self.wordsDict allKeys] objectAtIndex:ip.row]];
+    DetailViewController *dvc = segue.destinationViewController;
+        
+    wordBlock passWordBlock = ^(Word *wrrd){
+        dvc.word = wrrd;
+        NSLog(@"%@", wrrd);
+    };
+    
+    passWordBlock(word);
 
 }
+
+/*
+- (void)addNewWordToDict:(Word *)word
+{
+    
+    [self.wordsDict setObject:word forKey:word.word];
+    wordCreationBlock addWordBlock = ^(
+}
+
+*/
+
+
+
+
+
 
 
 @end
