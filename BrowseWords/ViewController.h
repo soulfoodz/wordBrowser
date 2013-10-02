@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UITableViewController
+
+@property (strong, nonatomic) NSMutableDictionary *wordsDict;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
