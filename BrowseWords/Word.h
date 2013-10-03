@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString *word;
 @property (strong, nonatomic) NSString *definition;
-@property (strong, nonatomic) NSArray *synonyms;
+@property (strong, nonatomic) NSMutableArray *synonyms;
 
 
 - (id)initWithWord:(NSString *)word andDefinition:(NSString *)def;

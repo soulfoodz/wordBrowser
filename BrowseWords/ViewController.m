@@ -48,12 +48,12 @@ typedef Word* (^wordCreationBlock)(NSString *, NSString *, NSArray *);
 //    Word *rubberSpatula = [[Word alloc] initWithWord:@"rubberSpatula" andDefinition:@"Not a self-protection device"];
     
     
-    football.synonyms   = @[baseball, golfball];
-    baseball.synonyms   = @[tennisball, basketball];
-    tennisball.synonyms = @[football, basketball];
-    golfball.synonyms   = @[soccerball, baseball];
-    basketball.synonyms = @[golfball, tennisball];
-    soccerball.synonyms = @[baseball, football];
+    football.synonyms   = @[baseball, golfball].mutableCopy;
+    baseball.synonyms   = @[tennisball, basketball].mutableCopy;
+    tennisball.synonyms = @[football, basketball].mutableCopy;
+    golfball.synonyms   = @[soccerball, baseball].mutableCopy;
+    basketball.synonyms = @[golfball, tennisball].mutableCopy;
+    soccerball.synonyms = @[baseball, football].mutableCopy;
 
     [self.wordsDict setObject:football   forKey:football.word];
     [self.wordsDict setObject:baseball   forKey:baseball.word];
@@ -89,17 +89,24 @@ typedef Word* (^wordCreationBlock)(NSString *, NSString *, NSArray *);
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSMutableArray *array = [NSMutableArray new];
     NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-    Word *word                = [self.wordsDict objectForKey:[[self.wordsDict allKeys] objectAtIndex:ip.row]];
+    Word *word      = [self.wordsDict objectForKey:[[self.wordsDict allKeys] objectAtIndex:ip.row]];
+    
     DetailViewController *dvc = segue.destinationViewController;
-        
+    dvc.word = word;
+    
+    [self.wordsDict enumerateKeysAndObjectsUsingBlock:^(NSString *key, Word *word, BOOL *stop) {
+            NSLog(@"%@", word);
+            [array addObject:word];
+        }];
+    
+    dvc.isNewArray = [NSArray arrayWithArray:array];
+    
     wordBlock passWordBlock = ^(Word *wrrd){
         dvc.word = wrrd;
         NSLog(@"%@", wrrd);
     };
-    
-    passWordBlock(word);
-
 }
 
 /*
